@@ -1,5 +1,5 @@
-import { endAdventure } from '../..';
-import { wakeUp } from '../chapter_6/chapter_6_wake_up';
+import { endAdventure } from '../../index';
+import { gifts } from '../chapter_5_1/chapter_5_1_gifts';
 import { askQuestion, clear, print } from '../ui/console';
 
 const VERDICTS = ['Guilty', 'Not Guilty'] as const;
@@ -16,7 +16,7 @@ export function meetTheQueen(): void {
 
 	let guilty: boolean = false;
 
-	let witnesses: Witness[] = []; // 👉 FIXME ❌ - call getWitnesses here
+	let witnesses: Witness[] = getWitnesses(); // 👉 FIXME ❌ - call getWitnesses here
 
 	if (!witnesses || witnesses.length === 0) {
 		print(`No witnesses have come forward to defend you.`);
@@ -40,12 +40,29 @@ export function meetTheQueen(): void {
 		return endAdventure();
 	} else {
 		print(`You have been found NOT GUILTY! Thank goodness. 🥳`);
-		print('Time to wake up...');
-		return askQuestion('Press ENTER to continue! ', wakeUp);
+		//print('Time to wake up...');
+		print('Time to Receiving Gifts from Queen...');
+		//return askQuestion('Press ENTER to continue! ', wakeUp);
+		return askQuestion('Press ENTER to continue! ', gifts);
 	}
 }
 
 // 👉 FIXME ❌ - this function needs writing to meet the above criteria
-function getWitnesses(): any {
-	return [];
+function getWitnesses(): Array<Witness> {
+	return [{
+		name: 'The Mad Hatter',
+		giveEvidence: () => 'Not Guilty', // implicit return
+	},
+		{
+			name: 'The March Hare',
+			giveEvidence: () => { return 'Not Guilty' }, // explicit return (same result as above!)
+		},
+		{
+			name: 'The Cheshire Cat',
+			giveEvidence: () => 'Not Guilty',
+		},
+		{
+			name: 'The White Rabbit',
+			giveEvidence: () => 'Not Guilty',
+		},];
 }

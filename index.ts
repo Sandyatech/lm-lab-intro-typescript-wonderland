@@ -7,7 +7,7 @@ export function haveAdventures(): void {
 	print('| Welcome to Wonderland! |');
 	print('--------------------------');
 
-	askQuestion(`What's your name? `, failImmediately); // 👉 FIXME ❌
+	askQuestion(`What's your name? `,startAdventure); 
 }
 
 function startAdventure(name: string): void {
@@ -16,7 +16,7 @@ function startAdventure(name: string): void {
 			return enterTheRabbitHole(name);
 		} else {
 			print('***************************************');
-			print(`Hi ${name}. Sadly, the entry code failed! ☹`);
+			print(`Hi ${name}. Sadly, the entry code failed! ?`);
 			return endAdventure();
 		}
 	} else {
@@ -30,16 +30,16 @@ function failImmediately() {
 	return endAdventure();
 }
 
-const numberBiggerThanThree: any = '11'; // 👉 FIXME ❌
+let numberBiggerThanThree: number = 11; 
 
-// 👉 FIXME ❌
-function checkEntryCodeIsBiggerThanThree(code: any) {
-	return code > '3'; // 👉 FIXME ❌
+
+function checkEntryCodeIsBiggerThanThree(code: number) {
+	return code > 3; 
 }
 
 export function endAdventure(): void {
 	print('***************************************');
-	print('You did not make it through Wonderland. 😭');
+	print('You did not make it through Wonderland. ??');
 	askQuestion('Press ENTER to restart! ', haveAdventures);
 }
 
